@@ -8,7 +8,7 @@ import utilidades.EntradaDatos;
 
 /**
  *
- * @author Miquel Port
+ * @author Miquel Port666
  */
 public class RepasoCastor {
 
@@ -73,7 +73,7 @@ public class RepasoCastor {
                     
                     actual.setSaldo(actual.getSaldo() - retirada);
                     System.out.println("Aqui tiene sus " + retirada + " €");
-                    System.out.println("Le quedan " + actual.getSaldo() + " €");
+                    System.out.println("Le quedan " + actual.getSaldo() + "  €");
                 }
 
             } else {
