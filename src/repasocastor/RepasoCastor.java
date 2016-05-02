@@ -33,7 +33,7 @@ public class RepasoCastor {
                     ingreso(misCuentas);
                     break;
                 case 3:
-                    
+
                     retirada(misCuentas);
                     break;
                 case 4:
@@ -57,39 +57,32 @@ public class RepasoCastor {
 
     }
 
-    public static void retirada(ArrayList<Cuenta> misCuentas){
+    public static void retirada(ArrayList<Cuenta> misCuentas) {
         int id;
         double retirada = 0;
-        boolean idencontrado = false;
-        
-        do{
-            id=EntradaDatos.pedirEntero("En que cuenta quieres retirar dinero");
-            for (Cuenta actual : misCuentas){
-                if (actual.getId() == id){
-                    idencontrado = true;
-                    //do{
-                    retirada = EntradaDatos.pedirDouble("Cuanto quieres retirar");
-                   
+
+        id = EntradaDatos.pedirEntero("En que cuenta quieres retirar dinero");
+        for (Cuenta actual : misCuentas) {
+            if (actual.getId() == id) {
+
+                retirada = EntradaDatos.pedirDouble("Cuanto quieres retirar");
+
+                if (actual.getSaldo() - retirada < 0) {
+                    System.out.println("No tienes suficiente dinero para retirar dispones de: " + actual.getSaldo());
+                } else {
                     
-                    
-                    if (actual.setSaldo(actual.getSaldo(- retirada)) < 0){
-                        System.out.println("No tienes suficiente dinero para retirar dispones de: " + actual.getSaldo());
-                    }
-                    
-                        
-                    
-                    
-                    
-                    
-                    //}while (actual.getSaldo() < 0);
+                    actual.setSaldo(actual.getSaldo() - retirada);
+                    System.out.println("Aqui tiene sus " + retirada + " €");
+                    System.out.println("Le quedan " + actual.getSaldo() + " €");
                 }
+
+            } else {
+                System.out.println("No hay cuentas con ese codigo");
             }
-            
-        }while (!idencontrado);
-        
-        
+        }
+
     }
-    
+
     public static void ingreso(ArrayList<Cuenta> misCuentas) {
         int id;
         double ingreso = 0;
